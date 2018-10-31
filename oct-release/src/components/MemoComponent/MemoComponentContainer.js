@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Input from '../../presentationComponents/InputComponent';
+import Input from '../presentationComponents/InputComponent';
 import MemoPresentation from '../presentationComponents/MemoPresentation';
 import MemoizedPresentation from '../presentationComponents/MemoizedPresentation';
 
@@ -8,7 +8,7 @@ export default class MemoComponent extends Component {
     super(props);
     this.state = {
       count: 0,
-      value: 'this is about Testing Page'
+      value: 'Testing Memoization of React v16'
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -20,9 +20,14 @@ export default class MemoComponent extends Component {
   render() {
     return (
       <div>
+        <h3>Testing New Feature of React Memoization</h3>
         <Input type="text" placeholder="Type your test" label="Memo Demo" onChange={this.handleChange} />
-        <MemoPresentation withMemo={this.state.value} />
-        <MemoizedPresentation withMemo={this.state.value} />
+        <div className="withoutMemo" style={{ float: 'left' }}>
+          <MemoPresentation withMemo={this.state.value} />
+        </div>
+        <div className="withMemo" style={{ float: 'right' }}>
+          <MemoizedPresentation withMemo={this.state.value} />
+        </div>
       </div>
     );
   }
